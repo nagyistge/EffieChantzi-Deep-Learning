@@ -36,7 +36,11 @@ $ nprtool
 
 ### Task B
 
-#### x = b1t1 + b2_t1_^2
+#### x = b1t1 + b2_t1_^2 
+
+##### Plot Dataset
+$ dataset = generateDataset(500, 3, 2, 1, 'modelfunc', 'plotDataset');
+
 
 
 
