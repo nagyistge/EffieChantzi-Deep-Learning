@@ -38,6 +38,9 @@ $ nprtool
 
 #### x = b1t1 + b2t1^2 
 
+##### Generate Dataset
+$ dataset = generateDataset(500, 3, 2, 1, 'modelfunc');
+
 ##### Plot Dataset
 $ dataset = generateDataset(500, 3, 2, 1, 'modelfunc', 'plotDataset');
 
@@ -47,6 +50,9 @@ $ [dataset, eigenvalues] = generateDataset(500, 3, 2, 1, 'modelfunc', 'pca');
 
 #### x = b1t1 + b2t2 
 
+##### Generate Dataset
+$ dataset = generateDataset(500, 3, 2, 2, 'modelfunc');
+
 ##### Plot Dataset
 $ dataset = generateDataset(500, 3, 2, 2, 'modelfunc', 'plotDataset');
 
@@ -55,6 +61,31 @@ $ [dataset, eigenvalues] = generateDataset(500, 3, 2, 2, 'modelfunc', 'pca');
 
 
 
-### TaskD
+### Task D
+
+#### x = b1t1 + b2t1^2 
+$ dataset = generateDataset(500, 3, 2, 1, 'modelfunc');
+
+##### Autoencoder {3-2-3}
+$ reconstructedData = autoencoderHL1(dataset, 2, ...
+                                    'EncoderTransferFunction', 'satlin', ...
+                                    'DecoderTransferFunction','purelin');
+##### Autoencoder {3-7-2-7-3}
+$ reconstructedData = autoencoderHL3(dataset, dataset, [7 2 7]);
+
+#### x = b1t1 + b2t2 
+$ dataset = generateDataset(500, 3, 2, 2, 'modelfunc');
+
+##### Autoencoder {3-2-3}
+$ reconstructedData = autoencoderHL1(dataset, 2, ...
+                                    'EncoderTransferFunction', 'satlin', ...
+                                    'DecoderTransferFunction','purelin');
+##### Autoencoder {3-7-2-7-3}
+$ reconstructedData = autoencoderHL3(dataset, dataset, [7 2 7]);
+
+
+
+
+
 
 
