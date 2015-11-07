@@ -34,15 +34,27 @@ or
 $ nprtool
 
 
-### Task B
+### Tasks B, C
 
-#### x = b1t1 + b2_t1_^2 
+#### x = b1t1 + b2t1^2 
 
 ##### Plot Dataset
 $ dataset = generateDataset(500, 3, 2, 1, 'modelfunc', 'plotDataset');
 
+##### PCA
+$ [dataset, eigenvalues] = generateDataset(500, 3, 2, 1, 'modelfunc', 'pca');
+
+
+#### x = b1t1 + b2t2 
+
+##### Plot Dataset
+$ dataset = generateDataset(500, 3, 2, 2, 'modelfunc', 'plotDataset');
+
+##### PCA
+$ [dataset, eigenvalues] = generateDataset(500, 3, 2, 2, 'modelfunc', 'pca');
 
 
 
+### TaskD
 
 
