@@ -12,6 +12,7 @@ Below are the required commands in the command promt for all tasks.
 $ help nndatasets
 
 --function fitting (regression)
+
 $ help simplefit_dataset
 $ [inputs, targets] = simplefit_dataset;
 $ ClassificationRegressionNN(inputs, targets, 'R');
