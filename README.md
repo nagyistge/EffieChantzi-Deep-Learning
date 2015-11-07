@@ -28,8 +28,17 @@ or <br />
 $ options = {'division', [0.8 0.1 0.1]}; <br />
 or <br />
 $ options = {'neurons', 20, 'division', [0.8 0.1 0.1]} <br />
-$ or other such combinations <br />
-$ ClassificationRegressionNN(inputs, targets, 'C', options);
+or other such combinations <br />
+$ ClassificationRegressionNN(inputs, targets, 'C', options); <br />
 or 
 $ nprtool
+
+
+### Task B
+
+#### x = b1*t1 + b2*t1^2
+
+
+
+
 
