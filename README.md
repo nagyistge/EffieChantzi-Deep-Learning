@@ -9,8 +9,9 @@ Below are the required commands in the command promt for all tasks.
 
 ### Task A
 
-$ help nndatasets\\
---function fitting (regression)
+$ help nndatasets
+
+#### Function Fitting (Regression)
 
 $ help simplefit_dataset
 $ [inputs, targets] = simplefit_dataset;
