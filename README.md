@@ -77,8 +77,8 @@ $ reconstructedData = autoencoderHL3(dataset, dataset, [7 2 7]);
 $ dataset = generateDataset(500, 3, 2, 2, 'modelfunc');
 
 ##### Autoencoder {3-2-3}
-$ reconstructedData = autoencoderHL1(dataset, 2, ...
-                                    'EncoderTransferFunction', 'satlin', ...
+$ reconstructedData = autoencoderHL1(dataset, 2, ... <br />
+                                    'EncoderTransferFunction', 'satlin', ... <br />
                                     'DecoderTransferFunction','purelin');
 ##### Autoencoder {3-7-2-7-3}
 $ reconstructedData = autoencoderHL3(dataset, dataset, [7 2 7]);
