@@ -36,7 +36,7 @@ $ nprtool
 
 ### Task B
 
-#### x = b1t1 + b2t1^2
+#### x = b1t1 + b2_t1_^2
 
 
 
