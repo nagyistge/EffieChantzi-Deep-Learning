@@ -4,7 +4,7 @@ Repository for the project "Deep Learning" in "Complex Data: Analysis & Visualiz
 
 ## Exercise 1
 
-It contains all the .m files needed for tasks A, B, C and D. 
+It contains all the .m files needed for tasks A, B, C and D. <br />
 Below are the required commands in the command promt for all tasks.
 
 ### Task A
