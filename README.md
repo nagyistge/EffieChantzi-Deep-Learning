@@ -30,7 +30,7 @@ or <br />
 $ options = {'neurons', 20, 'division', [0.8 0.1 0.1]} <br />
 or other such combinations <br />
 $ ClassificationRegressionNN(inputs, targets, 'C', options); <br />
-or 
+or <br />
 $ nprtool
 
 
