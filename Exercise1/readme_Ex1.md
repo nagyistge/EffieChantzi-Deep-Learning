@@ -3,7 +3,7 @@
 It contains all the .m files needed for tasks A, B, C and D. <br />
 Below are the required commands in the command prompt for all tasks.
 
-### Task A
+### `Task A`
 
 $ help nndatasets
 
@@ -30,7 +30,7 @@ or <br />
 $ nprtool
 
 
-### Tasks B, C
+### `Tasks B, C`
 
 #### x = b1t1 + b2t1^2 
 
@@ -57,7 +57,7 @@ $ [dataset, eigenvalues] = generateDataset(500, 3, 2, 2, 'modelfunc', 'pca');
 
 
 
-### Task D
+### `Task D`
 
 #### x = b1t1 + b2t1^2 
 $ dataset = generateDataset(500, 3, 2, 1, 'modelfunc');
