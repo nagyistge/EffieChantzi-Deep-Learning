@@ -7,7 +7,8 @@ When the issue with task C(ii) will be solved, it will be updated with .m files 
 
 > Evaluate Performance Classification Once
 
--[] 5 neurons
+- 5 neurons and 'crossentropy'
+- 
 
 
 
