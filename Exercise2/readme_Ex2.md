@@ -5,5 +5,7 @@ When the issue with task C(ii) will be solved, it will be updated with .m files 
 
 ### `Task A`
 
+> Evaluate Performance Classification Once
+
 
 
