@@ -7,7 +7,7 @@ When the issue with task C(ii) will be solved, it will be updated with .m files 
 
 > Evaluate Performance Classification Once
 
-1. 5 neurons and 'crossentropy'
+* 5 neurons and 'crossentropy'
 ```
 probabilities = testClassifierOnce(XTrain, LTrain, XTest, LTest, [1 5000], 5);
 ```
