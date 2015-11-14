@@ -31,11 +31,11 @@ probabilities = testClassifierOnce(XTrain, LTrain, XTest, LTest, [1 5000], 25);
 ```
 probabilities = testClassifierOnce(XTrain, LTrain, XTest, LTest, [1 5000], 25, 'mse');
 ```
-* [25 10] (2-hidden layer) and 'crossentropy'
+* {25-10} (2 hidden layers) and 'crossentropy'
 ```
 probabilities = testClassifierOnce(XTrain, LTrain, XTest, LTest, [1 5000], [25 10]);
 ```
-* [25 10] (2-hidden layer) and 'mse'
+* {25-10} (2 hidden layers) and 'mse'
 ``` 
 probabilities = testClassifierOnce(XTrain, LTrain, XTest, LTest, [1 5000], [25 10], 'mse');
 ```
