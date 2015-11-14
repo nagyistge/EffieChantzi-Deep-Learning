@@ -16,8 +16,10 @@
 %                                                                       %
 %                                                                       %
 %                                                                       %
-% Run this script and enter the size of hidden layer(s) as well as the  %
-% number of iterations to evaluate the classification performance.      %
+% Run this script and enter the size of hidden layer(s), the number of  %
+% iterations to evaluate the classification performance, as well as     %
+% if you want to change from the default performance measure            %
+% 'crossentropy' to 'mse'.                                              %
 %                                                                       %
 %                                                                       %
 % IMPORTANT!!                                                           %
@@ -42,16 +44,23 @@ N = [1 5000];
 
 fprintf('--------------------------- Classification Performance --------------------------\n');
 hiddenSize = 0;
-while ((sum(mod(hiddenSize, 1)) > 0) || (sum(hiddenSize < 1) > 0))
+while ((sum(mod(hiddenSize, 1)) > 0) || (sum(hiddenSize < 1) > 0) || (isempty(hiddenSize)))
 
     hiddenSize = input('Enter the size of hidden layers: \n');
     
 end
 
 iter = 0;
-while ((mod(iter, 1) > 0) || (iter < 1))
+while ((sum(mod(iter, 1)) > 0) || (sum(iter < 1) > 0) || (isempty(iter)))
 
     iter = input('Enter the number of iterations for performance evaluation: \n');
+    
+end
+
+performFcn = '';
+while ((~strcmpi(performFcn, 'Y') && ~strcmpi(performFcn, 'N')) || (isempty(performFcn)))
+    
+    performFcn = input('Change from default "crossentropy" to "mse"? (Y/N):\n', 's');
     
 end
 
@@ -61,7 +70,12 @@ probabilities = zeros(2, iter);
 for i = 1 : iter
     
     fprintf('--------------------------------- Iteration %d ---------------------------------\n', i);
-    probs = testClassifierOnce(XTrain, LTrain, XTest, LTest, N, hiddenSize);
+    if (strcmpi(performFcn, 'Y'))
+        probs = testClassifierOnce(XTrain, LTrain, XTest, LTest, N, hiddenSize, 'mse');
+    else
+        probs = testClassifierOnce(XTrain, LTrain, XTest, LTest, N, hiddenSize);
+    end
+    
     probabilities(1, i) = probs(1);
     probabilities(2, i) = probs(2);
     fprintf('--------------------------------------------------------------------------------\n\n');
