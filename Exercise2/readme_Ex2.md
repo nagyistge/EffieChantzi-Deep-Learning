@@ -47,3 +47,17 @@ Run the following in the command prompt and a menu will guide you through
 ``` 
 evaluateClassifier 
 ```
+
+### `Task C`
+Run the following in the command prompt and a menu will guide you through
+``` 
+SAE
+```
+
+
+### `Tasks D, E`
+expected soon..
+
+
+
+
