@@ -1,9 +1,8 @@
-## Exercise 2
+## Exercise 3
 
-It contains all the .m files needed for tasks A, B and C. <br />
-When the issue with task C(ii) will be solved, it will be updated with .m files for tasks D, E.
+It contains all the .m files needed for tasks A, B, C, D, E, F, G. <br />
 
-### `Tasks A, B`
+### `Task A`
 
 > Evaluate Performance Classification Once
 
