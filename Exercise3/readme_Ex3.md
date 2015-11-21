@@ -21,8 +21,30 @@ taskB
 
 ### `Tasks C, D, E, G`
 
+* PCA initialization
 
+> Run the following in the command prompt and a menu will guide you through
 
+``` 
+taskD_PCA
+```
 
+* Autoencoders initialization
+
+> Run the following in the command prompt and a menu will guide you through
+
+``` 
+taskD_AE
+```
+
+### `Task F`
+
+* PCA initialization
+
+> Run the following in the command prompt and a menu will guide you through
+
+``` 
+taskF
+```
 
 
