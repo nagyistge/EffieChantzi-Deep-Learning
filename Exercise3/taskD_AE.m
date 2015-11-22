@@ -103,7 +103,7 @@ deepnet = train(deepnet, images, images);
 %% Test Network on Test Dataset
 
 [XTest, LTest] = digittest_dataset;
-imagesTest = createInputs(XTest, [1 N]);
+imagesTest = createInputs(XTest, [1 5000]);
 
 reconstructedImagesTest = deepnet(imagesTest);
 
