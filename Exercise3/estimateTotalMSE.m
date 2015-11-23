@@ -27,10 +27,10 @@
 
 function totalMSE = estimateTotalMSE(inputs, reconstructions)
 
-dim = size(inputs, 1);
-MSE = zeros(1, dim);
+obs = size(inputs, 2);
+MSE = zeros(1, obs);
 
-for i = 1 : dim
+for i = 1 : obs
    
     MSE(1, i) = immse(reconstructions(:, i), inputs(:, i));
     
