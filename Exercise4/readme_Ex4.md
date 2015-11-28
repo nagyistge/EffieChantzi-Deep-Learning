@@ -30,7 +30,7 @@ doubleCV
 ```
 
 
-### `Task C
+### Task C
 
 > Run the following in the command prompt
 
