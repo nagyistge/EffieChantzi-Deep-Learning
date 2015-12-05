@@ -77,6 +77,7 @@ images_40 = images_40(:, ~ismember(1:size(images_40, 2), c));<br/>
 [r, c] = find(mean_intensity < 0.02);<br/>
 test_images_40 = test_images_40(:, ~ismember(1:size(test_images_40, 2), c));<br/>
 
+<br/>
 * mRNA gene expression dataset
 
 glio_mRNA_data = GEOSeriesData('GSE23806');
