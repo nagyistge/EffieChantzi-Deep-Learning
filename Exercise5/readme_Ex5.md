@@ -1,4 +1,4 @@
-## Exercise 4
+## Exercise 5
 
 It contains all the .m, .mat and .avi files needed for tasks A, B, C. <br />
 
