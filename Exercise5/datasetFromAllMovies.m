@@ -31,6 +31,9 @@
 % 'inputs'. This is returned by the function, since it can be useful    %
 % for visual inspection of the extracted frames according to the video  %
 % that they belong to.                                                  %
+% mean_intensity: mean intensity of each input(image) vector. This      %
+% output argument is necessary for setting the threshold to filter out  %
+% unmeaningful images                                                   %
 %                                                                       %
 %                                                                       %
 % IMPORTANT !!!                                                         %
@@ -40,7 +43,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-function [inputs, movieAxis] = datasetFromAllMovies(movieObjArray, usedFrames, step_height, step_width, offset)
+function [inputs, movieAxis, mean_intensity] = datasetFromAllMovies(movieObjArray, usedFrames, step_height, step_width, offset)
 
 % number of movie objects
 numOfMovies = length(movieObjArray);
@@ -60,6 +63,13 @@ for i = 1 : numOfMovies
     images = read(movieObjArray(1, i).Value, [1 usedFrames]);
     subimages = extractSubImages(images, step_height, step_width, (floor(size(images, 1)/2) - offset), (floor(size(images, 2)/2) - offset));
     inputs(:, movieAxis(i) : movieAxis(i) + (usedFrames - 1)) = subimages;
+    
+end
+
+mean_intensity = zeros(1, totalImages);
+for i = 1 : totalImages
+
+    mean_intensity(1, i) = mean(inputs(:, i));
     
 end
 
