@@ -68,10 +68,18 @@ The following steps are required in order to create the datasets, which are save
 
 movieObjArray = createMovieObjects('movies');<br/>
 [images_40, movieAxis, mean_intensity] = datasetFromAllMovies(movieObjArray, 93, 40, 40, 10);<br/>
-[r, c] = find(mean_images_40 < 0.009);<br/>
+[r, c] = find(mean_intensity < 0.009);<br/>
 images_40 = images_40(:, ~ismember(1:size(images_40, 2), c));<br/>
 
+> Test Dataset
+
+[test_images_40, movieAxis, mean_intensity] = datasetFromAllMovies(movieObjArray, 93, 40, 40, 25);<br/>
+[r, c] = find(mean_intensity < 0.02);<br/>
+test_images_40 = test_images_40(:, ~ismember(1:size(test_images_40, 2), c));<br/>
+
 * mRNA gene expression dataset
+
+glio_mRNA_data = GEOSeriesData('GSE23806');
 
 
 
