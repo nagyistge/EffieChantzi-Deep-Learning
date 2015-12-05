@@ -56,10 +56,15 @@ PCA
 ``` 
 SAE
 ```
-<br /><br /><br />
+<br /><br />
 
 ### `Datasets Creation`
 
+The following steps are required in order to create the datasets, which are saved as .mat files under /data.
+
+* Image dataset from time-lapse microscopy movies
+
+* mRNA gene expression dataset
 
 
 
