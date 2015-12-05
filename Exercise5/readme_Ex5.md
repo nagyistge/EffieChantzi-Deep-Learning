@@ -38,7 +38,7 @@ taskB
 ```
 
 
-### Task C
+### `Task C`
 
 * PCA Initialization
 
