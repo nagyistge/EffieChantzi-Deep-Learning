@@ -1,6 +1,6 @@
 ## Exercise 5
 
-It contains all the .m, .mat and .avi files needed for tasks A, B, C. <br />
+It contains all the .m, .mat and .avi files needed for tasks A, B and C. <br />
 
 ### `Task A`
 
