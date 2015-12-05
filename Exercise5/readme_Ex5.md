@@ -66,10 +66,10 @@ The following steps are required in order to create the datasets, which are save
 
 > Training Dataset
 
-movieObjArray = createMovieObjects('movies');
-[images_40, movieAxis, mean_intensity] = datasetFromAllMovies(movieObjArray, 93, 40, 40, 10);
-[r, c] = find(mean_images_40 < 0.009);
-images_40 = images_40(:, ~ismember(1:size(images_40, 2), c));
+movieObjArray = createMovieObjects('movies');<br/>
+[images_40, movieAxis, mean_intensity] = datasetFromAllMovies(movieObjArray, 93, 40, 40, 10);<br/>
+[r, c] = find(mean_images_40 < 0.009);<br/>
+images_40 = images_40(:, ~ismember(1:size(images_40, 2), c));<br/>
 
 * mRNA gene expression dataset
 
