@@ -27,7 +27,7 @@ CV_B
 
 ### `Datasets Creation For Task A`
 
-The following steps are required in order to create the rrequired image datasets, which are saved as .mat files under /data.
+The following steps are required in order to create the image datasets, which are saved as .mat files under /data.
 
 movieObjArray = createMovieObjects('movies');<br/>
 
