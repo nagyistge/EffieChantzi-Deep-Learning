@@ -1,6 +1,6 @@
 ## Exercise 6
 
-It contains all the .m, .mat, .avi files needed for tasks A and B, as well as all the obtained results. <br />
+It contains all the .m, .mat, .avi files needed for tasks A and B, as well as all the obtained results under /results. <br />
 
 ### `Task A`
 
@@ -45,3 +45,9 @@ movieObjArray = createMovieObjects('movies');<br/>
  train_images_45_m18(:, 93 : 184) = images02;<br/>
  train_predictions_45_m18(:, 1 : 92) = predictions01;<br/>
  train_predictions_45_m18(:, 93 : 184) = predictions02;<br/>
+
+> Test Dataset
+
+ [images_m18_t, movieAxis_m18_t, mean_intensity_m18_t] = datasetFromAllMovies(movieObjArray, 93, 45, 45, -1);<br/>
+ [r_m18_t, c_m18__t] = find(mean_intensity_m18_t < 0.009);<br/>
+ [test_images_45_m18, test_predictions_45_m18] = predictionDataset(images_m18_t, movieAxis_t(3), 93);<br/>
