@@ -27,24 +27,21 @@ CV_B
 
 ### `Datasets Creation For Task A`
 
-The following steps are required in order to create the datasets, which are saved as .mat files under /data.
+The following steps are required in order to create the rrequired image datasets, which are saved as .mat files under /data.
 
-* Image dataset from time-lapse microscopy movies
+movieObjArray = createMovieObjects('movies');<br/>
+
+* Movie 18 - Large interphase nuclei
 
 > Training Dataset
 
-movieObjArray = createMovieObjects('movies');<br/>
-[images_40, movieAxis, mean_intensity] = datasetFromAllMovies(movieObjArray, 93, 40, 40, 10);<br/>
-[r, c] = find(mean_intensity < 0.009);<br/>
-images_40 = images_40(:, ~ismember(1:size(images_40, 2), c));<br/>
-
-> Test Dataset
-
-[test_images_40, movieAxis, mean_intensity] = datasetFromAllMovies(movieObjArray, 93, 40, 40, 25);<br/>
-[r, c] = find(mean_intensity < 0.02);<br/>
-test_images_40 = test_images_40(:, ~ismember(1:size(test_images_40, 2), c));<br/>
-
-<br/>
-* mRNA gene expression dataset
-
-glio_mRNA_data = GEOSeriesData('GSE23806');
+ [images_m18_1, movieAxis_m18_1, mean_intensity_m18_1] = datasetFromAllMovies(movieObjArray, 93, 45, 45, 15);<br/>
+ [r_m18_1, c_m18_1] = find(mean_intensity_m18_1 < 0.009);<br/>
+ [images_m18_2, movieAxis_m18_2, mean_intensity_m18_2] = datasetFromAllMovies(movieObjArray, 93, 45, 45, 0);<br/>
+ [r_m18_2, c_m18_2] = find(mean_intensity_m18_2 < 0.009);<br/>
+ [images01, predictions01] = predictionDataset(images_m18_1, movieAxis(3), 93);<br/>
+ [images02, predictions02] = predictionDataset(images_m18_2, movieAxis_5(3), 93);<br/>
+ train_images_45_m18(:, 1 : 92) = images01;<br/>
+ train_images_45_m18(:, 93 : 184) = images02;<br/>
+ train_predictions_45_m18(:, 1 : 92) = predictions01;<br/>
+ train_predictions_45_m18(:, 93 : 184) = predictions02;<br/>
