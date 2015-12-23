@@ -1,0 +1,86 @@
+----------------------------------------- Deep Learning -----------------------------------------
+   ---------------------------------------- Exercise 6 --------------------------------------
+     ------------------------------------- Task A ---------------------------------------
+
+Select time-laspe microscopy movie:
+1. Large interphase nuclei (movie 18)
+2. Fragmented nuclei (movie 28)
+1
+
+ Enter a positive value for the M latent variables: 
+90
+
+ Enter the number of CV folds: 
+5
+
+ Select number of hidden layers:
+1. One
+2. Two
+1
+
+ Enter the bottleneck sizes as a row vector: 
+[85 75 65 55]
+
+ Select initialization method:
+1. PCA
+2. SAE
+3. Random
+2
+
+ ------------------->  CV: Iter 1 of 5  <------------------- 
+H = 85 ...
+
+H = 75 ...
+
+H = 65 ...
+
+H = 55 ...
+
+
+ ------------------->  CV: Iter 2 of 5  <------------------- 
+H = 85 ...
+
+H = 75 ...
+
+H = 65 ...
+
+H = 55 ...
+
+
+ ------------------->  CV: Iter 3 of 5  <------------------- 
+H = 85 ...
+
+H = 75 ...
+
+H = 65 ...
+
+H = 55 ...
+
+
+ ------------------->  CV: Iter 4 of 5  <------------------- 
+H = 85 ...
+
+H = 75 ...
+
+H = 65 ...
+
+H = 55 ...
+
+
+ ------------------->  CV: Iter 5 of 5  <------------------- 
+H = 85 ...
+
+H = 75 ...
+
+H = 65 ...
+
+H = 55 ...
+
+
+ Time elapsed for 5-fold CV: 0.00 (hrs) 5.00 (min) 45.63 (sec)
+
+ -------------------- Training Performance --------------------
+Total MSE on the training dataset: 0.00866
+
+ -------------------- Testing Performance --------------------
+Total MSE on the test dataset: 0.00389
