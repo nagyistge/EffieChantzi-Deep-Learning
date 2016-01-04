@@ -112,7 +112,7 @@ PCs_M = str2double(PCs_M);
 [coeff_inputs, score_inputs, latent_inputs, mu_inputs, totalVarPCs_M_inputs, reconstructions_inputs, totalMSE_inputs] = PCAonData(train_images, PCs_M, mode);
 
 % compressed inputs
-inputs = score_inputs(:, (1 : PCs_M))';
+inputs = score_inputs';
 
 
 [coeff_targets, score_targets, latent_targets, mu_targets, totalVarPCs_M_targets, reconstructions_targets, totalMSE_targets] = PCAonData(train_predictions, PCs_M/2, mode);
@@ -331,7 +331,7 @@ fprintf('Total MSE on the training dataset: %.5f\n', totalMSE_training);
 [coeff_inputs_t, score_inputs_t, latent_inputs_t, mu_inputs_t, totalVarPCs_M_inputs_t, reconstructions_inputs_t, totalMSE_inputs_t] = PCAonData(test_images, PCs_M, mode);
 
 % compressed inputs
-inputs_t = score_inputs_t(:, (1 : PCs_M))';
+inputs_t = score_inputs_t';
 
 
 [coeff_predictions_t, score_predictions_t, latent_predictions_t, mu_predictions_t, totalVarPCs_M_predictions_t, reconstructions_predictions_t, totalMSE_predictions_t] = PCAonData(test_predictions, PCs_M/2, mode);
@@ -340,7 +340,7 @@ inputs_t = score_inputs_t(:, (1 : PCs_M))';
 
 outputs_predictions_test = net(inputs_t);
 N = size(outputs_predictions_test, 2);
-uncompressed_outputs_predictions_test = coeff_predictions_t(:, (1 : PCs_M/2))*outputs_predictions_test + mu_predictions_t(:, 1 : N);
+uncompressed_outputs_predictions_test = coeff_predictions_t*outputs_predictions_test + mu_predictions_t(:, 1 : N);
 totalMSE_test = estimateTotalMSE(reconstructions_predictions_t, uncompressed_outputs_predictions_test, 'im');
 
 if (movie == 1)

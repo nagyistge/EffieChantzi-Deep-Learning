@@ -190,7 +190,16 @@ end
 time_end = toc(time_start);
 
 % time required for the double CV(s)
-fprintf('Time elapsed: %.2f (hrs)\n', (time_end/3600));
+t = datevec(time_end./(60*60*24));
+if (times_doubleCV == 1)
+
+    fprintf('\n Time elapsed for %d double CV with inner = %d and outer = %d folds: %.2f (hrs) %.2f (min) %.2f (sec)\n', times_doubleCV, K_inner, K_outer, t(4), t(5), t(6));
+    
+else
+    
+    fprintf('\n Time elapsed for %d double CVs with inner = %d and outer = %d folds: %.2f (hrs) %.2f (min) %.2f (sec)\n', times_doubleCV, K_inner, K_outer, t(4), t(5), t(6));
+    
+end
 
 %% averaging error estimates from the different times that double CV is performed (times_doubleCV)
 mean_E_inner_avg_star = zeros(1, times_doubleCV);
