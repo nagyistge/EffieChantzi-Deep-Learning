@@ -48,14 +48,18 @@ dataType = str2double(dataType);
 
 if (dataType == 1)
    
-  load 'images_40.mat';
-  data = images_40;  
-  reshapeVector = [40 40];
-  mode = 'im';
+    cd data
+    load 'images_40.mat';
+    cd ..
+    data = images_40;  
+    reshapeVector = [40 40];
+    mode = 'im';
   
 else
     
+    cd data
     load 'glio_mRNA_data.mat';
+    cd ..
     data = glio_mRNA_data;
     mode = 'ge';
     

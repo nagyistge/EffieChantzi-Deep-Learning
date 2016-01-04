@@ -1,5 +1,5 @@
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        %% Chantzi Efthymia - Deep Learning - Exercises 3,4  %%
+        %% Chantzi Efthymia - Deep Learning - Exercises 3, 4 %%
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -15,28 +15,28 @@
 %                                                                       %
 %                                                                       %
 % %%%% Inputs %%%%                                                      %
-% data: data input matrix. Rows correspond to observations and columns  %
-% correspond to variables, meaning the dimensions.                      %
-% PCs_M: user-defined 'M' principle components, for the calculation of  %
+% data: data input matrix. Rows correspond to dimensions and columns    %
+% correspond to observations.                                           %
+% PCs_M: user-defined 'M' principal components, for the calculation of  %
 % the reconstruction of the compressed data back to initial number of   %   
 % dimensions and the total mean square error                            %
 %                                                                       %
 %                                                                       %
 % %%%% Outputs %%%%                                                     %
-% coeff: principle component coefficients in decreasing order of        %
-% component variance                                                    %
-% score: principle component scores, meaning the representation of input%
-% data in the principle component space. Rows of score correspond to    %
-% observations and rows correspond to components.                       %
-% latent: principle component variances, meaning the eigenvalues in     %
-% decreasing order                                                      %
+% coeff: PCs_M user-defined principal component coefficients in         %
+% decreasing order of component variance                                %
+% score: PCs_M user-defined principal component scores, meaning the     %
+% representation of input data in the principle component space. Rows   %
+% of score correspond to observations and rows correspond to components.%
+% latent: PCs_M user-defined principal component variances, meaning the %
+% eigenvalues in decreasing order                                       %
 % mu: estimated mean of each variable in input data                     %                                                                      
-% totalVarPCs_M: total variance covered by the user-defined 'M'         %
-% principle components                                                  %
+% totalVarPCs_M: total variance covered by the PCs_M user-defined       %
+% principal components                                                  %
 % reconstructedImages: reconstruction of the compressed input data to   %
-% the user-defined 'M' principal components                             %
+% the user-defined PCs_M principal components                           %
 % totalMSE: total mean square error between the original input data and %
-% the reconstructed data after the compression to user-defined 'M'      %
+% the reconstructed data after the compression to user-defined PCs_M    %
 % principal components                                                  %
 %                                                                       %
 % It is possible to skip any of the output arguments by putting the     %
@@ -53,13 +53,18 @@ observations = size(data, 2);
 % built-in pca 
 [coeff, score, latent, ~, explained, mu] = pca(data');
 
+% outputs adjusted only to PCs_M user-defined principal components
+coeff = coeff(:, (1 : PCs_M));
+score = score(:, (1 : PCs_M));
+latent = latent(1 : PCs_M);
+
 % total variance covered by the user-defined 'PCs_M' principle components
 totalVarPCs_M = sum(explained((1 : PCs_M), 1));
 
 %% Reconstruction of compressed input data
 
 mu = repmat(mu', 1, observations);
-reconstructedImages = coeff(:, (1 : PCs_M))*score(:, (1 : PCs_M))' + mu;
+reconstructedImages = coeff*score' + mu;
 
 %% Total Mean Square Error on the whole input dataset
 totalMSE = estimateTotalMSE(data, reconstructedImages);

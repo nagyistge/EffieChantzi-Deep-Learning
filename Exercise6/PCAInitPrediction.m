@@ -37,20 +37,21 @@ if (len == 2)                   % 1 hidden layer (3 layers in total)
     
     WeightsBiases = cell(1, 4);
     
-    %% 1st hidden layer
+   %% 1st hidden layer
     [coeff, ~, latent, mu, ~, ~, ~] = PCAonData(data, PCAvector(1), typeOfData);
 
     % weights and biases for 1st HL
-    B1_transpose = coeff(:, (1 : PCAvector(1)))'; 
-    c = size(B1_transpose, 2);
+    B1 = coeff(:, (1 : PCAvector(1))); 
+    c = size(B1, 2);
 
     sqrt_lamda = sqrt(latent);
     factor = (ones(c, 1)*s)./sqrt_lamda;
     D1 = diag(factor);
-    W1 = B1_transpose*D1;
+
+    W1 = D1*B1';
     b1 = -W1*mu;
 
-    a_n = W1*(coeff'*(data - mu)) + b1;
+    a_n = W1*data + b1;
 
     if (strcmpi(activationFunction, 'logsig') == 1)
 
@@ -67,19 +68,20 @@ if (len == 2)                   % 1 hidden layer (3 layers in total)
     end
     
     %% Output Layer
-
+    
     [coeff2, ~, latent2, mu2, ~, ~, ~] = PCAonData(z_n, PCAvector(2), typeOfData);
 
-    % weights and biases for output HL
-    B2_transpose = coeff2(:, (1 : PCAvector(2)))'; 
-    c2 = size(B2_transpose, 2);
+    % weights and biases for 2nd HL
+    B2 = coeff2(:, (1 : PCAvector(2))); 
+    c2 = size(B2, 2);
 
     sqrt_lamda2 = sqrt(latent2);
     factor2 = (ones(c2, 1)*s)./sqrt_lamda2;
     D2 = diag(factor2);
 
-    W2 = B2_transpose*D2;
+    W2 = D2*B2';
     b2 = -W2*mu2;
+
 
     %% Assign all weight and biases matrices to cell structure as output
     WeightsBiases{1, 1} = W1;
@@ -93,19 +95,21 @@ elseif (len == 3)               % 2 hidden layers (4 layers in total)
     WeightsBiases = cell(1, 6);
     
     %% 1st hidden layer
+    
     [coeff, ~, latent, mu, ~, ~, ~] = PCAonData(data, PCAvector(1), typeOfData);
 
     % weights and biases for 1st HL
-    B1_transpose = coeff(:, (1 : PCAvector(1)))'; 
-    c = size(B1_transpose, 2);
+    B1 = coeff(:, (1 : PCAvector(1))); 
+    c = size(B1, 2);
 
     sqrt_lamda = sqrt(latent);
     factor = (ones(c, 1)*s)./sqrt_lamda;
     D1 = diag(factor);
-    W1 = B1_transpose*D1;
+
+    W1 = D1*B1';
     b1 = -W1*mu;
 
-    a_n = W1*(coeff'*(data - mu)) + b1;
+    a_n = W1*data + b1;
 
     if (strcmpi(activationFunction, 'logsig') == 1)
 
@@ -126,17 +130,17 @@ elseif (len == 3)               % 2 hidden layers (4 layers in total)
     [coeff2, ~, latent2, mu2, ~, ~, ~] = PCAonData(z_n, PCAvector(2), typeOfData);
 
     % weights and biases for 2nd HL
-    B2_transpose = coeff2(:, (1 : PCAvector(2)))'; 
-    c2 = size(B2_transpose, 2);
+    B2 = coeff2(:, (1 : PCAvector(2))); 
+    c2 = size(B2, 2);
 
     sqrt_lamda2 = sqrt(latent2);
     factor2 = (ones(c2, 1)*s)./sqrt_lamda2;
     D2 = diag(factor2);
 
-    W2 = B2_transpose*D2;
+    W2 = D2*B2';
     b2 = -W2*mu2;
 
-    a_n2 = W2*(coeff2'*(z_n - mu2)) + b2;
+    a_n2 = W2*z_n + b2;
 
     if (strcmpi(activationFunction, 'logsig') == 1)
 
@@ -153,18 +157,18 @@ elseif (len == 3)               % 2 hidden layers (4 layers in total)
     end
 
     %% Output Layer
-
+    
     [coeff3, ~, latent3, mu3, ~, ~, ~] = PCAonData(z_n2, PCAvector(3), typeOfData);
 
-    % weights and biases for output HL
-    B3_transpose = coeff3(:, (1 : PCAvector(3)))'; 
-    c3 = size(B3_transpose, 2);
+    % weights and biases for 2nd HL
+    B3 = coeff3(:, (1 : PCAvector(3))); 
+    c3 = size(B3, 2);
 
     sqrt_lamda3 = sqrt(latent3);
     factor3 = (ones(c3, 1)*s)./sqrt_lamda3;
     D3 = diag(factor3);
 
-    W3 = B3_transpose*D3;
+    W3 = D3*B3';
     b3 = -W3*mu3;
     
     %% Assign all weight and biases matrices to cell structure as output

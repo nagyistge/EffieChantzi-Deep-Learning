@@ -32,9 +32,10 @@ MSE = zeros(1, obs);
 
 for i = 1 : obs
    
-    MSE(1, i) = immse(reconstructions(:, i), inputs(:, i));
+    MSE(1, i) = immse(reconstructions(:, i), inputs(:, i));      %MSE(1, i) = mean((reconstructions(:, i) - inputs(:, i)).^2); or MSE(1, i) = (sum((reconstructions(:, i) - inputs(:, i)).^2))/(size(inputs(:, i), 1))
     
 end
+
 
 totalMSE = mean(MSE);
 fprintf('Total MSE of Reconstruction: %.5f%\n', totalMSE);

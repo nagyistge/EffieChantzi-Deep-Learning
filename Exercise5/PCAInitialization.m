@@ -1,6 +1,6 @@
-        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        %% Chantzi Efthymia - Deep Learning - Exercises 3,4,5  %%
-        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        %% Chantzi Efthymia - Deep Learning - Exercises 3,4,5 %%
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % This function initializes the weights and biases of a user-defined    %
@@ -34,7 +34,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-function [W1, W2, W3, W4, b1, b2, b3, b4] = PCAInitialization(PCAvector, s, data, activationFunction, typeOfData)
+function [W1, W2, W3, W4, b1, b2, b3, b4] = PCAInitialization(PCAvector, s, data, activationFunction,  typeOfData)
 
 % number of observations/samples of input data
 samples = size(data, 2);
@@ -44,16 +44,17 @@ samples = size(data, 2);
 [coeff, ~, latent, mu, ~, ~, ~] = PCAonData(data, PCAvector(1), typeOfData);
 
 % weights and biases for 1st HL
-B1_transpose = coeff(:, (1 : PCAvector(1)))'; 
-c = size(B1_transpose, 2);
+B1 = coeff(:, (1 : PCAvector(1))); 
+c = size(B1, 2);
 
 sqrt_lamda = sqrt(latent);
 factor = (ones(c, 1)*s)./sqrt_lamda;
 D1 = diag(factor);
-W1 = B1_transpose*D1;
+
+W1 = D1*B1';
 b1 = -W1*mu;
 
-a_n = W1*(coeff'*(data - mu)) + b1;
+a_n = W1*data + b1;
 
 if (strcmpi(activationFunction, 'logsig') == 1)
     
@@ -76,50 +77,46 @@ end
 [coeff2, ~, latent2, mu2, ~, ~, ~] = PCAonData(z_n, PCAvector(2), typeOfData);
 
 % weights and biases for 2nd HL
-B2_transpose = coeff2(:, (1 : PCAvector(2)))'; 
-c2 = size(B2_transpose, 2);
+B2 = coeff2(:, (1 : PCAvector(2))); 
+c2 = size(B2, 2);
 
 sqrt_lamda2 = sqrt(latent2);
 factor2 = (ones(c2, 1)*s)./sqrt_lamda2;
 D2 = diag(factor2);
 
-W2 = B2_transpose*D2;
+W2 = D2*B2';
 b2 = -W2*mu2;
 
 %% 3rd Hidden Layer
 
-S = sparse(D2);
-C = inv(S);
-inverseD2 = full(C);
+inverseD2 = inv(D2);
 o3 = ones(PCAvector(2), samples);
 
 if (mode == 1) % logsig
     
-    W3 = 4*(W2*inverseD2)';
+    W3 = 4*B2*inverseD2;
     b3 = mu2 - ((1/2)*W3)*o3; 
     
 else % tansig
     
-   W3 = (W2*inverseD2)';
+   W3 = B2*inverseD2;
    b3 = mu2 - W3*o3; 
     
 end
 
-%% Output Layer
+%% 4th Hidden Layer
 
-S = sparse(D1);
-C = inv(S);
-inverseD1 = full(C);
+inverseD1 = inv(D1);
 o4 = ones(PCAvector(1), samples);
 
 if (mode == 1) % logsig
    
-    W4 = 4*(W1*inverseD1)';
+    W4 = 4*B1*inverseD1;
     b4 = mu - ((1/2)*W4)*o4; 
     
 else % tansig
     
-    W4 = (W1*inverseD1)';
+    W4 = B1*inverseD1;
     b4 = mu - W4*o4;
     
 end

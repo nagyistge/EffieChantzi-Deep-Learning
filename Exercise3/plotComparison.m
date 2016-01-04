@@ -47,12 +47,12 @@ end
 axes;
 if (isempty(architectureVector))
    
-    h = title(sprintf('PCA Reconstruction\n MSE_{total} = %.2f%%', totalMSE*100));
+    h = title(sprintf('PCA Reconstruction\n MSE_{total} = %.4f%', totalMSE));
     
 else
-    
+   
     g = sprintf('%d-', architectureVector);
-    h = title(sprintf('Reconstruction by Deep network %s\n MSE_{total} = %.2f%%', g(1:end-1), totalMSE*100));
+    h = title(sprintf('Reconstruction by Deep network %s\n MSE_{total} = %.4f%', g(1:end-1), totalMSE));
     
 end
 set(gca, 'Visible', 'off');

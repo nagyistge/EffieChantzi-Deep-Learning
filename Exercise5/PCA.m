@@ -106,7 +106,7 @@ if (inputType == 1)
     [coeff, score, latent, mu, totalVarPCs_M, reconstructions, totalMSE] = PCAonData(data, PCs_M, mode);
     
     % compressed inputs
-    inputs = score(:, (1 : PCs_M))';
+    inputs = score';
     
 else
     
@@ -152,14 +152,13 @@ reconstructions_training = deepnet(inputs);
 if (inputType == 1)
     
     
-    reconstructions_training = coeff(:, (1 : PCs_M))*reconstructions_training + mu;
-    totalMSE_PCA_training = estimateTotalMSE(data, reconstructions_training, mode);
+    reconstructions_training_uncompressed = coeff*reconstructions_training + mu;
+    totalMSE_PCA_training = estimateTotalMSE(data, reconstructions_training_uncompressed, mode);
     
     % time-lapse movie dataset
     if(dataType == 1)
    
-        plotComparison(data, reconstructions_training, [1 5], [PCs_M hiddenSize PCs_M], reshapeVector, totalMSE_PCA_training);
-        plotComparison(data, reconstructions, [1 5], [], reshapeVector, totalMSE);
+        plotComparison(data, reconstructions_training_uncompressed, [1 5], [PCs_M hiddenSize PCs_M], reshapeVector, totalMSE_PCA_training);
         
     % mRNA gene expression dataset    
     else
@@ -199,17 +198,41 @@ if (dataType == 1)
     load 'test_images_40.mat';
     cd ..
     
-    outputs = deepnet(test_images_40);
-
-    % total reconstruction error
-    fprintf('\n');
-    fprintf('-------------------- Testing Performance --------------------\n');
-    totalMSE_PCA_test = estimateTotalMSE(test_images_40, outputs, 'im');
-    fprintf('Total MSE on the test dataset: %.5f', totalMSE_PCA_test);
-    fprintf('\n');
-
-    % visual inspection of first 5 original vs. reconstructed test images
-    plotComparison(test_images_40, outputs, [1 5], architectureVector, reshapeVector, totalMSE_PCA_test);
+    % compressed test inputs
+    if (inputType == 1)
+        
+        [coeff_test, score_test, latent_test, mu_test, totalVarPCs_M_test, reconstructions_test, totalMSE_test] = PCAonData(test_images_40, PCs_M, mode);
+    
+        % compressed inputs
+        inputs_test = score_test';
+        
+    % original/uncompressed test inputs  
+    else
+        
+        inputs_test = test_images_40;
+        
+    end
+    
+    outputs = deepnet(inputs_test);
+    
+    % compressed test outputs
+    if (inputType == 1)
+        
+        reconstructions_test_uncompressed = coeff_test*outputs + mu_test;
+        totalMSE_PCA_test = estimateTotalMSE(test_images_40, reconstructions_test_uncompressed, mode);
+        
+        plotComparison(test_images_40, reconstructions_test_uncompressed, [1 5], [PCs_M hiddenSize PCs_M], reshapeVector, totalMSE_PCA_test);
+        
+    % original/uncompressed test outputs
+    else
+        
+        totalMSE_PCA_test = estimateTotalMSE(test_images_40, outputs, mode);
+        
+        % visual inspection of first 5 original vs. reconstructed test images
+        plotComparison(test_images_40, outputs, [1 5], architectureVector, reshapeVector, totalMSE_PCA_test);
+        
+    end
+    
     
 end
 

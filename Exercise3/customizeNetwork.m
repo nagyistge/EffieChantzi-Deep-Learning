@@ -82,7 +82,7 @@ net.layers{2}.name = 'Hidden 2';
 net.layers{3}.dimensions = size(W3, 1);
 net.layers{3}.name = 'Hidden 3';
 
-% user-defined activation functions
+% user-defined transfer functions
 if (mode == 1)
    
     net.layers{1}.transferFcn = 'logsig';

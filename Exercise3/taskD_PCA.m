@@ -52,7 +52,7 @@ end
 
 %% PCA Initialization
 
-[W1, W2, W3, W4, b1, b2, b3, b4] = PCAInitialization([hiddenSize(1) hiddenSize(2)], 1/40, images, activationFunction);
+[W1, W2, W3, W4, b1, b2, b3, b4] = PCAInitialization([hiddenSize(1) hiddenSize(2)], 1/3, images, activationFunction);
 
 %% Weights and biases initialization 
 

@@ -73,3 +73,12 @@ fprintf('-----------------------------------------------------------------------
 
 % visual inspection of a small set of original vs. reconstruction images
 plotComparison(images, reconstructedImages, [firstIm lastIm], [], totalMSE);
+
+
+temp = zeros(1, 5000);
+for i = 1 : 5000
+    
+    temp(1, i) = (sum((images(:, i) - reconstructedImages(:, i)).^2))/784;
+    
+end
+manualMean = mean(temp);

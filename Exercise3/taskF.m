@@ -47,12 +47,12 @@ labels = createNewLabels(LTrain, [1 5000]);
 %% New Training dataset consisting only of 200 samples: 100 "3" & 100 "others"
 images_3 = zeros(dim, 100);
 for i = 1 : 100
-    images_3(:, i) = images(:, c_1(i));
+    images_3(:, 1) = images(:, c_1(i));
 end
 
 images_others = zeros(dim, 100);
 for i = 1 : 100
-    images_others(:, i) = images(:, c_0(i));
+    images_others(:, 1) = images(:, c_0(i));
 end
 
 images_200 = zeros(dim, 200);
