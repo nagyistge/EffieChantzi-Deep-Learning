@@ -12,6 +12,15 @@ It contains all the .m, .mat and .avi files needed for tasks A, B and C. <br />
 compressionPCA
 ```
 
+
+* PCA Initialization
+
+> Run the following in the command prompt and a menu will guide you through
+
+```
+PCA
+```
+
 * Ordinary Stacked Autoencoder Initialization
 
 > Run the following in the command prompt and a menu will guide you through
