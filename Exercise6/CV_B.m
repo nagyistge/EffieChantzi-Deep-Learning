@@ -331,7 +331,7 @@ end
 
 %% test dataset
 
-% L = H_optimal gained by 2-fold CV
+% L = H_optimal gained by k-fold CV
 [coeff_test_Hopt, score_test_Hopt, latent_test_Hopt, mu_test_Hopt, totalVarPCs_M_test_Hopt, reconstructions_test_Hopt, totalMSE_PCA_test_Hopt, totalRMSE_PCA_test_Hopt] = PCAonData(test_inputs, H(c), 'im', 'rmse');
 fprintf('\n');
 fprintf('Total MSE after compression to %d dimensions on the test dataset: %.15f\n', H(cR), totalMSE_PCA_test_Hopt);
