@@ -14,7 +14,7 @@
 % produced.                                                              %
 % The initialization of the deep neural networks used during the cross   %
 % validation and the training of the final networks with the optimal size%
-% of bottleneck node layer, is SAE-based initialization.                 %
+% of bottleneck node layer, is determined by SAE-based initialization.   %
 % At the end, plain PCA-based compression, using L latent variables equal%
 % to the optimal value for the bottleneck node layer, is performed for   %
 % comparison with the respective deep learning.                          %
